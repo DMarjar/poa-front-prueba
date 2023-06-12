@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
 
 Vue.use(VueRouter)
 
@@ -8,12 +7,11 @@ const routes: Array<RouteConfig> = [
   {
     path: '/',
     name: 'login',
-    component: HomeView
   },
   {
     path: '/perfil',
     name: 'perfil',
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
+    component: () => import(/* webpackChunkName: "profile" */ '@/modules/profile/adapters/views/ProfileUser.vue')
   }
 ]
 
