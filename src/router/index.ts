@@ -1,22 +1,35 @@
-import Vue from 'vue'
-import VueRouter, { RouteConfig } from 'vue-router'
+import Vue from "vue";
+import VueRouter, { RouteConfig } from "vue-router";
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
   {
-    path: '/',
-    name: 'login',
+    path: "/",
+    name: "login",
   },
   {
-    path: '/perfil',
-    name: 'perfil',
-    component: () => import(/* webpackChunkName: "profile" */ '@/modules/profile/adapters/views/ProfileUser.vue')
-  }
-]
+    path: "/poa",
+    name: "home",
+    component: () =>
+      import(
+        /* webpackChunkName: "poa" */ "@/modules/profile/adapters/layouts/ProfileLayout.vue"
+      ),
+    children: [
+      {
+        path: "/profile",
+        name: "profile",
+        component: () =>
+          import(
+            /* webpackChunkName: "profile" */ "@/modules/profile/adapters/views/ProfileUser.vue"
+          ),
+      },
+    ],
+  },
+];
 
 const router = new VueRouter({
-  routes
-})
+  routes,
+});
 
-export default router
+export default router;
